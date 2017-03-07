@@ -1,0 +1,25 @@
+<ion-content style="margin: 30px auto;">
+    <div class="text-center">
+       <!-- <img src="images/univtr.png" alt=""> -->
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <div class="list list-inset login">
+                <form ng-submit="login()">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Usuario" ng-model="data.username" autofocus>
+                    </label>
+                    <label class="item item-input ">
+                        <input type="password" placeholder="Contraseña" ng-model="data.password">
+                    </label>
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col text-center">
+                            <input type="submit" button class="button button-wide button-large button-assertive" value="Entrar">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</ion-content>
+

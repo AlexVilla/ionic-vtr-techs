@@ -1,0 +1,13 @@
+<ion-header-bar class="bar-dark" align-title="center">
+    <button class="button button-icon" ng-click="toggleMenu()">
+        <i class="icon ion-navicon"></i>
+    </button>
+    <h1 class="title">Tareas</h1>
+</ion-header-bar>
+<ion-content>
+    <ion-list>
+        <ion-item ng-repeat="task in tasks" class="item item-thumbnail-left" ui-sref="app.program({id: course._id})">
+            <p>{{task}}</p>
+        </ion-item>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>inicio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" type="text/css" href="css/ionic.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <!-- endbuild -->
+
+</head>
+<body ng-app="techs">
+<ion-side-menus ng-controller="SideNavCtrl">
+    <!-- Center content -->
+    <ion-side-menu-content>
+        <div ui-view="content"></div>
+    </ion-side-menu-content>
+
+
+    <!-- Left menu -->
+    <div ui-view="sidenav"></div>
+
+
+</ion-side-menus>
+
+    <script src="phonegap.js"></script>
+<!--build:js scripts/main.js -->
+    <script src="scripts/ionic.min.js"></script>
+    <script src="scripts/ionic.bundle.js"></script>
+    <script src="scripts/angular-ui-router.min.js"></script>
+    <script src="scripts/angular-filter.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services.js"></script>
+    <script src="scripts/controllers.js"></script>
+    <script src="scripts/utils.js"></script>
+<!-- endbuild -->
+
+</body>
+</html>
