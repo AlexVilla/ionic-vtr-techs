@@ -7,7 +7,7 @@
 </ion-header-bar>
 <ion-content>
     <ion-list>
-        <ion-item ng-repeat="task in tasks | filter: search " class="item" ui-sref="app.task({id: task._id})">
+        <ion-item ng-repeat="task in endTasks | filter: search " class="item" ui-sref="app.task({id: task._id})">
             <h2>{{task.descripcion}}</h2>
             <p>Comuna: {{task.ubicacion[0].comuna}}</p>
             <p>Nodo: {{task.ubicacion[0].nodo}} | cuadrante: {{task.ubicacion[0].cuadrante}}</p>

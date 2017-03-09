@@ -1,43 +1,49 @@
 'use strict';
 angular.module('techs', ['ionic','ui.router','angular.filter','angular-momentjs','ngCordova'])
-
 .config(function($stateProvider, $urlRouterProvider){
     $stateProvider
-    .state('app',{
-        url:'/tasks',
-        views:{
-            'sidenav':{
-                templateUrl: 'views/sidenav.html'
-            },
-            'content':{
-                templateUrl: 'views/tasks.html',
-                controller: 'TaskCtrl'
+        .state('app',{
+            url:'/tasks',
+            views:{
+                'sidenav':{
+                    templateUrl: 'views/sidenav.html'
+                },
+                'content':{
+                    templateUrl: 'views/tasks.html',
+                    controller: 'TaskCtrl'
+                }
             }
-        }
-    })
+        })
 
-    .state('app.task',{
-        url:'/tasks/:id',
-        views:{
-            'sidenav':{
-                templateUrl: 'views/sidenav.html'
-            },
-            'content':{
-                templateUrl: 'views/taskDetail.html',
-                controller: 'TaskDetailCtrl'
+        .state('app.status',{
+            url:'/:status',
+            views:{
+                'content@':{
+                    templateUrl: 'views/taskByStatus.html',
+                    controller: 'TaskCtrl'
+                }
             }
-        }
-    })
+        })
 
-    .state('login', {
-        url: '/login',
-        views:{
-            'content@':{
-                templateUrl: 'views/login.html',
-                controller: 'LoginCtrl'
+        .state('app.task',{
+            url:'/t/:id',
+            views:{
+                'content@':{
+                    templateUrl: 'views/taskDetail.html',
+                    controller: 'TaskDetailCtrl'
+                }
             }
-        }
-    });
+        })
+
+        .state('login', {
+            url: '/login',
+            views:{
+                'content@':{
+                    templateUrl: 'views/login.html',
+                    controller: 'LoginCtrl'
+                }
+            }
+        });
     $urlRouterProvider.otherwise('/login');
 })
 

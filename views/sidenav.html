@@ -8,9 +8,9 @@
             </ion-item>
             <!--<ion-item ng-click="close()" ui-sref="app.profile">Perfil</ion-item>-->
             <ion-item ng-click="close()" ui-sref="app">Listado de Tareas</ion-item>
-            <ion-item ng-click="close()" ui-sref="app">Tareas Terminadas</ion-item>
-            <ion-item ng-click="close()" ui-sref="app">Tareas Pendientes</ion-item>
-            <ion-item ng-click="close()" ui-sref="app">Tareas Incompletas</ion-item>
+            <ion-item ng-click="close()" ui-sref="app.status({status: 'Terminado'})">Tareas Terminadas</ion-item>
+            <ion-item ng-click="close()" ui-sref="app.status({status: 'Pendiente'})">Tareas Pendientes</ion-item>
+            <ion-item ng-click="close()" ui-sref="app.status({status: 'Incompleto'})">Tareas Incompletas</ion-item>
             <!--<ion-item ng-click="close()">Mis Calificaciones</ion-item>-->
             <ion-item ng-click="endSesion()">Cerrar Sesión</ion-item>
         </ion-list>

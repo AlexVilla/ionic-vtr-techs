@@ -33,7 +33,8 @@ angular.module('techs')
                 nodo: 3,
                 cuadrante: 23,
                 lat: "-33.429100",
-                long: "-70.645288"
+                long: "-70.645288",
+                comuna:  'Renca'
             }],
             descripcion: "Cables rotos",
             responsable_terreno: "Papelucho",
@@ -51,7 +52,8 @@ angular.module('techs')
                 nodo: 1,
                 cuadrante: 97,
                 lat: "-33.429100",
-                long: "-70.645288"
+                long: "-70.645288",
+                comuna:  'Providencia'
             }],
             descripcion: "Cables rotos",
             responsable_terreno: "Papelucho",
@@ -69,7 +71,8 @@ angular.module('techs')
                 nodo: 2,
                 cuadrante: 43,
                 lat: "-33.429100",
-                long: "-70.645288"
+                long: "-70.645288",
+                comuna:  'Las Condes'
             }],
             descripcion: "Cables rotos",
             responsable_terreno: "Papelucho",
@@ -87,7 +90,8 @@ angular.module('techs')
                 nodo: 3,
                 cuadrante: 43,
                 lat: "-33.429100",
-                long: "-70.645288"
+                long: "-70.645288",
+                comuna:  'Renca'
             }],
             descripcion: "Cables rotos",
             responsable_terreno: "Papelucho",
@@ -105,7 +109,7 @@ angular.module('techs')
         };
 
         this.getNodes = function(){
-            var nodos = ['seleccione'];
+            var nodos = [];
             for(var i = 0; i < tasks.length; i++){
                 nodos[i] = tasks[i].ubicacion[0].nodo;
             }
@@ -113,8 +117,17 @@ angular.module('techs')
             return nodos.sort();
         };
 
+        this.getComunas = function(){
+            var comunas =  [];
+            for(var i = 0; i < tasks.length; i++){
+                comunas[i] = tasks[i].ubicacion[0].comuna;
+            }
+
+            return comunas.sort();
+        };
+
         this.getCuadrantes = function(){
-            var cuadrantes = ['seleccione'];
+            var cuadrantes = [];
             for(var i = 0; i < tasks.length; i++){
                 cuadrantes[i] = tasks[i].ubicacion[0].cuadrante;
             }
@@ -123,12 +136,41 @@ angular.module('techs')
         };
 
         this.getStatus = function(){
-            var status = ['seleccione'];
+            var status = [];
             for(var i = 0; i < tasks.length; i++){
                 status[i] = tasks[i].estado;
             }
 
             return status.sort();
-        }
+        };
 
+        this.finishedTask = function(){
+            var task = [];
+            for(var i = 0; i < tasks.length; i++){
+                if (tasks[i].estado == "Terminado"){
+                    task[i] = tasks[i];
+                }
+            }
+            return task;
+        };
+
+        this.pendingTask = function(){
+            var task = [];
+            for(var i = 0; i < tasks.length; i++){
+                if (tasks[i].estado == "Pendiente"){
+                    task[i] = tasks[i];
+                }
+            }
+            return task;
+        };
+
+        this.uncompleteTask = function(){
+            var task = [];
+            for(var i = 0; i < tasks.length; i++){
+                if (tasks[i].estado == "Incompleto"){
+                    task[i] = tasks[i];
+                }
+            }
+            return task;
+        };
     });
