@@ -104,7 +104,9 @@ angular.module('techs')
         };
         $ionicPlatform.ready(function () {
             $scope.openDate = function (){
-                $cordovaDatePicker.show(dateOptions);
+                $cordovaDatePicker.show(dateOptions).then(function(date){
+                    $scope.filterOptions.fecha = date;
+                });
             };
         });
 
