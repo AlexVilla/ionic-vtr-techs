@@ -44,8 +44,9 @@ angular.module('techs')
             }
         };
         $scope.convertDate = function(timestamp){
-            return $moment.unix(timestamp).format('DD/MM/YYYY H:m');
-        }
+            console.log($moment.unix(timestamp).format('DD/MM/YYYY H:mm'));
+            return $moment.unix(timestamp).format('DD/MM/YYYY H:mm');
+        };
 
         $ionicModal.fromTemplateUrl('filtermodal.html',{
             scope: $scope,

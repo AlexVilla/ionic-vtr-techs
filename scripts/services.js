@@ -74,7 +74,7 @@ angular.module('techs')
             descripcion: "Cables rotos",
             responsable_terreno: "Papelucho",
             tecnico: "JARRO",
-            hora_creacion: "1483401600",
+            hora_creacion: "1483419600",
             hora_cierre: "",
             img: [{
 
