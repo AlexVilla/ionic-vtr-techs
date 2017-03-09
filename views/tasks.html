@@ -54,7 +54,7 @@
                 </label>
                 <label class="item item-input">
                     <span class="input-label">FECHA</span>
-                    <input type="text" pick-a-date="date" pick-a-date-options="dateOptions" ng-model="filterOptions.fecha"/> {{ date }}
+                    <input type="text" placeholder="Elegir Fecha" ng-click="openDate()" ng-model="filterOptions.fecha"/> {{ date }}
                 </label>
             </div>
         </ion-content>

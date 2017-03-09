@@ -1,5 +1,5 @@
 'use strict';
-angular.module('techs', ['ionic','ui.router','angular.filter','angular-momentjs','angular-datepicker'])
+angular.module('techs', ['ionic','ui.router','angular.filter','angular-momentjs','ngCordova'])
 
 .config(function($stateProvider, $urlRouterProvider){
     $stateProvider

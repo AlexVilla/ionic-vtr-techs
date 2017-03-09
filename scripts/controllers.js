@@ -34,8 +34,7 @@ angular.module('techs')
             })
     }
 }])
-
-    .controller('TaskCtrl',['$scope', 'TaskService', '$moment', '$ionicModal', function($scope, TaskService, $moment, $ionicModal){
+    .controller('TaskCtrl',['$scope', 'TaskService', '$moment', '$ionicModal', '$cordovaDatePicker', '$ionicPlatform', function($scope, TaskService, $moment, $ionicModal, $cordovaDatePicker, $ionicPlatform){
         $scope.tasks = TaskService.getTask();
         $scope.checkStatus = function(estado){
             return (estado == "Terminado");
@@ -92,9 +91,24 @@ angular.module('techs')
             );
         };
 
-        $scope.dateOptions = {
-            format: 'dd/mm/yyyy'
-        }
+        var dateOptions = {
+            date: new Date(),
+            mode: 'date', // or 'time'
+            minDate: new Date() - 10000,
+            allowOldDates: true,
+            allowFutureDates: false,
+            doneButtonLabel: 'DONE',
+            doneButtonColor: '#F2F3F4',
+            cancelButtonLabel: 'CANCEL',
+            cancelButtonColor: '#000000'
+        };
+        $ionicPlatform.ready(function () {
+            $scope.openDate = function (){
+                $cordovaDatePicker.show(dateOptions);
+            };
+        });
+
     }])
+
 ;
 
