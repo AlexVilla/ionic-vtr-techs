@@ -105,8 +105,8 @@ angular.module('techs')
         $ionicPlatform.ready(function () {
             $scope.openDate = function (){
                 $cordovaDatePicker.show(dateOptions).then(function(date){
-                    console.log($moment(date, 'DD-MM-YYYY'));
-                    $scope.filterOptions.fecha = $moment(date, 'DD-MM-YYYY');
+                    var a = $moment(date, 'DD-MM-YYYY').valueOf()/1000;
+                    $scope.filterOptions.fecha = $moment.unix(a).format('DD/MM/YYYY');
                 });
             };
         });
