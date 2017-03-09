@@ -3,11 +3,64 @@
         <i class="icon ion-navicon"></i>
     </button>
     <h1 class="title">Tareas</h1>
+    <button class="button button-small button-clear" ng-click="openModal()" style="font-size: 13px;">Filtrar <i class="icon ion-funnel"></i></button>
 </ion-header-bar>
 <ion-content>
     <ion-list>
-        <ion-item ng-repeat="task in tasks" class="item item-thumbnail-left" ui-sref="app.program({id: course._id})">
-            <p>{{task}}</p>
+        <ion-item ng-repeat="task in tasks | filter: search " class="item" ui-sref="app.program({id: course._id})">
+            <h2>{{task.descripcion}}</h2>
+            <p>Nodo: {{task.ubicacion[0].nodo}} | cuadrante: {{task.ubicacion[0].cuadrante}}</p>
+            <p><span ng-class="{'badge badge-assertive': !checkStatus(task.estado), 'badge badge-balanced': checkStatus(task.estado)}">{{task.estado}}</span></p>
+            <p>Detección de incidente: {{convertDate(task.hora_creacion)}}</p>
+            <p ng-if="!checkStatus(task.estado_cierre)">fecha de cierre: {{convertDate(task.hora_cierre)}}</p>
         </ion-item>
     </ion-list>
 </ion-content>
+
+<script id="filtermodal.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar>
+            <h1 class="title">Filtrar</h1>
+            <button class="button button-small" ng-click="closeModal()">X</button>
+        </ion-header-bar>
+        <ion-content>
+            <div class="list">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        NODO
+                    </div>
+                    <select ng-model="filterOptions.nodo">
+                        <option value="">Seleccione</option>
+                        <option ng-repeat="value in allNodes | unique" value="{{value}}">{{value}}</option>
+                    </select>
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        CUADRANTE
+                    </div>
+                    <select ng-model="filterOptions.cuadrante">
+                        <option value="">Seleccione</option>
+                        <option ng-repeat="value in allCuadrantes | unique" value="{{value}}">{{value}}</option>
+                    </select>
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        ESTADO
+                    </div>
+                    <select ng-model="filterOptions.estado">
+                        <option value="">Seleccione</option>
+                        <option ng-repeat="value in allStatus | unique" value="{{value}}">{{value}}</option>
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">FECHA</span>
+                    <input type="text" pick-a-date="date" pick-a-date-options="dateOptions" ng-model="filterOptions.fecha"/> {{ date }}
+                </label>
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</script>
+
+<script>
+    console.log(filterOptions.nodo);
+</script>

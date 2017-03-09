@@ -20,3 +20,16 @@
 .login{
     margin: 0 auto !important;
 }
+
+.item .badge{
+    top: 35px !important;
+}
+
+button.button-clear > i.icon.ion-funnel:before{
+    font-size: 18px !important;
+    padding-bottom: 10px;
+}
+
+.button .icon {
+    vertical-align: middle;
+}

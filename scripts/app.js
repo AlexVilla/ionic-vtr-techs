@@ -1,5 +1,5 @@
 'use strict';
-angular.module('techs', ['ionic','ui.router','angular.filter'])
+angular.module('techs', ['ionic','ui.router','angular.filter','angular-momentjs','angular-datepicker'])
 
 .config(function($stateProvider, $urlRouterProvider){
     $stateProvider
@@ -12,6 +12,19 @@ angular.module('techs', ['ionic','ui.router','angular.filter'])
             'content':{
                 templateUrl: 'views/tasks.html',
                 controller: 'TaskCtrl'
+            }
+        }
+    })
+
+    .state('app.task',{
+        url:'/tasks/:id',
+        views:{
+            'sidenav':{
+                templateUrl: 'views/sidenav.html'
+            },
+            'content':{
+                templateUrl: 'views/taskDetail.html',
+                controller: 'TaskDetailCtrl'
             }
         }
     })

@@ -35,9 +35,66 @@ angular.module('techs')
     }
 }])
 
-.controller('TaskCtrl',['$scope', function($scope){
-    $scope.tasks = [1, 2, 3];
-    console.log($scope.tasks);
-}])
+    .controller('TaskCtrl',['$scope', 'TaskService', '$moment', '$ionicModal', function($scope, TaskService, $moment, $ionicModal){
+        $scope.tasks = TaskService.getTask();
+        $scope.checkStatus = function(estado){
+            return (estado == "Terminado");
+        };
+        $scope.convertDate = function(timestamp){
+            return $moment.unix(timestamp).format('DD/MM/YYYY H:m');
+        }
+
+        $ionicModal.fromTemplateUrl('filtermodal.html',{
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal){
+            $scope.modal = modal;
+        });
+        $scope.openModal = function() {
+            $scope.modal.show();
+        };
+        $scope.closeModal = function() {
+            $scope.modal.hide();
+        };
+        // Cleanup the modal when we're done with it!
+        $scope.$on('$destroy', function() {
+            $scope.modal.remove();
+        });
+        // Execute action on hide modal
+        $scope.$on('modal.hidden', function() {
+            // Execute action
+        });
+        // Execute action on remove modal
+        $scope.$on('modal.removed', function() {
+            // Execute action
+        });
+
+        $scope.allNodes = TaskService.getNodes();
+        $scope.allCuadrantes = TaskService.getCuadrantes();
+        $scope.allStatus =  TaskService.getStatus();
+        $scope.filterOptions={
+            nodo: "",
+            cuadrante: "",
+            estado: "",
+            comuna: "",
+            fecha: "",
+            tipo_actividad: ""
+        };
+
+        $scope.search = function(row) {
+            return (
+                angular.lowercase(row.ubicacion[0].nodo).toString().indexOf(angular.lowercase($scope.filterOptions.nodo) || "")!== -1 &&
+                angular.lowercase(row.ubicacion[0].cuadrante).toString().indexOf(angular.lowercase($scope.filterOptions.cuadrante) || "") !== -1 &&
+                angular.lowercase(row.estado).toString().indexOf(angular.lowercase($scope.filterOptions.estado) || "") !== -1 &&
+                //angular.lowercase(row.comuna).toString().indexOf(angular.lowercase($scope.filterOptions.comuna) || "") !== -1 &&
+                angular.lowercase($moment.unix(row.hora_creacion).format('DD/MM/YYYY')).toString().indexOf(angular.lowercase($scope.filterOptions.fecha) || "") !== -1
+                //angular.lowercase(row.tipo_actividad).toString().indexOf(angular.lowercase($scope.filterOptions.tipo_actividad) || "") !== -1
+            );
+        };
+
+        $scope.dateOptions = {
+            format: 'dd/mm/yyyy'
+        }
+    }])
 ;
 
