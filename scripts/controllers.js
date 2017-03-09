@@ -94,7 +94,7 @@ angular.module('techs')
         var dateOptions = {
             date: new Date(),
             mode: 'date', // or 'time'
-            minDate: 1483228800,
+            minDate:  moment().subtract(100, 'years').toDate(),
             allowOldDates: true,
             allowFutureDates: false,
             doneButtonLabel: 'DONE',
@@ -105,6 +105,7 @@ angular.module('techs')
         $ionicPlatform.ready(function () {
             $scope.openDate = function (){
                 $cordovaDatePicker.show(dateOptions).then(function(date){
+                    console.log($moment(date, 'DD-MM-YYYY'));
                     $scope.filterOptions.fecha = $moment(date, 'DD-MM-YYYY');
                 });
             };
