@@ -37,7 +37,11 @@ angular.module('techs')
     .controller('TaskCtrl',['$scope', 'TaskService', '$moment', '$ionicModal', '$cordovaDatePicker', '$ionicPlatform', function($scope, TaskService, $moment, $ionicModal, $cordovaDatePicker, $ionicPlatform){
         $scope.tasks = TaskService.getTask();
         $scope.checkStatus = function(estado){
-            return (estado == "Terminado");
+            if (estado == "Incompleto"){
+                return 3;
+            }else{
+                return (estado == "Terminado");
+            }
         };
         $scope.convertDate = function(timestamp){
             return $moment.unix(timestamp).format('DD/MM/YYYY H:m');

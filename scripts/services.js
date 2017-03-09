@@ -64,7 +64,7 @@ angular.module('techs')
 
         },{
             _id: 2,
-            estado: "Pendiente",
+            estado: "Incompleto",
             ubicacion: [{
                 nodo: 2,
                 cuadrante: 43,
@@ -74,7 +74,7 @@ angular.module('techs')
             descripcion: "Cables rotos",
             responsable_terreno: "Papelucho",
             tecnico: "JARRO",
-            hora_creacion: "1488993389",
+            hora_creacion: "1483401600",
             hora_cierre: "",
             img: [{
 
