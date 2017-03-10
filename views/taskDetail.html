@@ -5,6 +5,14 @@
     <button class="button button-small button-clear" ng-click="openModal()" style="font-size: 13px;">Filtrar <i class="icon ion-funnel"></i></button>
 </ion-header-bar>
 <ion-content>
+    <div class="list card">
+        <div class="item item-image">
+            <img ng-src="{{pictureUrl}}">
+        </div>
+        <div class="padding">
+            <button class="button button-block button-calm" ng-click="takePicture()">Take Picture</button>
+        </div>
+    </div>
     <div class="list">
         <label class="item item-input item-stacked-label">
             <span class="input-label">First Name</span>

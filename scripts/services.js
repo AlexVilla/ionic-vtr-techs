@@ -173,4 +173,8 @@ angular.module('techs')
             }
             return task;
         };
+    })
+
+    .service('DetailService', function(){
+
     });

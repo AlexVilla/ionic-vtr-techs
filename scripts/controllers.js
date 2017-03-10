@@ -144,28 +144,35 @@ angular.module('techs')
     }
 }])
 
-.controller('TaskDetailCtrl', ['$scope', 'DetailService', '$state', '$ionicPopup', '$cordovaCamera', function($scope, LoginService, $state, $ionicPopup, $cordovaCamera){
-
+.controller('TaskDetailCtrl', ['$scope', 'DetailService', '$state', '$ionicPopup', '$cordovaCamera', '$ionicPlatform', function($scope, LoginService, $state, $ionicPopup, $cordovaCamera, $ionicPlatform){
+    $scope.pictureUrl = 'http://www.placehold.it/300x300';
+    $scope.takePicture = function () {
+        $cordovaCamera.getPicture(cameraOptions)
+            .then(function(imageData) {
+                console.log('camera data: ' + angular.toJson(imageData));
+                $scope.pictureUrl = "data:image/jpeg;base64," + imageData;
+                //var image = document.getElementById('myImage');
+                //image.src = "data:image/jpeg;base64," + imageData;
+        }, function(err) {
+                console.log('camera error: ' + angular.toJson(err));
+        });
+    };
     var cameraOptions = {
-        quality: 50,
+        //quality: 50,
         destinationType: Camera.DestinationType.DATA_URL,
-        sourceType: Camera.PictureSourceType.CAMERA,
-        allowEdit: true,
+        //sourceType: Camera.PictureSourceType.CAMERA,
+        //allowEdit: true,
         encodingType: Camera.EncodingType.JPEG,
-        targetWidth: 100,
-        targetHeight: 100,
-        popoverOptions: CameraPopoverOptions,
-        saveToPhotoAlbum: false,
-        correctOrientation:true
+       // targetWidth: 100,
+       // targetHeight: 100,
+       // popoverOptions: CameraPopoverOptions,
+       // saveToPhotoAlbum: false,
+       // correctOrientation:true
     };
 
-    $cordovaCamera.getPicture(cameraOptions).then(function(imageData) {
-        var image = document.getElementById('myImage');
-        image.src = "data:image/jpeg;base64," + imageData;
-    }, function(err) {
-        // error
-    });
-    
+    /*$ionicPlatform.ready(function () {
+
+    });*/
 }])
 ;
 
