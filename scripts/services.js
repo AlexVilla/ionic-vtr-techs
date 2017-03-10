@@ -29,6 +29,8 @@ angular.module('techs')
         var tasks = [{
             _id: 0,
             estado: "Pendiente",
+            solucion: "",
+            detalle: "",
             ubicacion: [{
                 nodo: 3,
                 cuadrante: 23,
@@ -48,6 +50,8 @@ angular.module('techs')
         },{
             _id: 1,
             estado: "Pendiente",
+            solucion: "",
+            detalle: "",
             ubicacion: [{
                 nodo: 1,
                 cuadrante: 97,
@@ -67,6 +71,8 @@ angular.module('techs')
         },{
             _id: 2,
             estado: "Incompleto",
+            solucion: "",
+            detalle: "",
             ubicacion: [{
                 nodo: 2,
                 cuadrante: 43,
@@ -86,6 +92,8 @@ angular.module('techs')
         },{
             _id: 3,
             estado: "Terminado",
+            solucion: "",
+            detalle: "",
             ubicacion: [{
                 nodo: 3,
                 cuadrante: 43,
@@ -106,6 +114,15 @@ angular.module('techs')
         //Math.round((new Date()).getTime() / 1000);
         this.getTask = function(){
             return tasks;
+        };
+
+        this.getATask = function(_id){
+            for(var i = 0; i < tasks.length; i++) {
+                if (tasks[i]._id == _id) {
+                    return tasks[i];
+                }
+            }
+            return "not task for this id";
         };
 
         this.getNodes = function(){
@@ -173,8 +190,5 @@ angular.module('techs')
             }
             return task;
         };
-    })
-
-    .service('DetailService', function(){
 
     });

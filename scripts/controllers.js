@@ -144,13 +144,49 @@ angular.module('techs')
     }
 }])
 
-.controller('TaskDetailCtrl', ['$scope', 'DetailService', '$state', '$ionicPopup', '$cordovaCamera', '$ionicPlatform', function($scope, LoginService, $state, $ionicPopup, $cordovaCamera, $ionicPlatform){
-    $scope.pictureUrl = 'http://www.placehold.it/300x300';
+.controller('TaskDetailCtrl', ['$scope', 'TaskService', '$ionicPopup', '$cordovaCamera', '$stateParams', '$moment', '$state', function($scope, TaskService, $ionicPopup, $cordovaCamera, $stateParams, $moment, $state){
+    $scope.task = TaskService.getATask(parseInt($stateParams.id));
+    $scope.task.hora_creacion = $moment.unix($scope.task.hora_creacion).format('DD/MM/YYYY H:mm');
+    $scope.checkStatus = function(estado){
+        if (estado == "Incompleto"){
+            return 3;
+        }else{
+            return (estado == "Terminado");
+        }
+    };
+
+    $scope.changeStatus = function (param){
+        switch (param){
+            case "P":
+                $scope.task.estado = "Pendiente";
+                break;
+            case "I":
+                $scope.task.estado = "Incompleto";
+                break;
+            case "T":
+                $scope.task.estado = "Terminado";
+                break;
+        }
+    };
+
+    $scope.details = {
+        solucion:"",
+        detalle:""
+    };
+    
+    $scope.save = function () {
+        //console.log($scope.details);
+        //TaskService.save(parseInt($stateParams), 'detalle', $scope.details.detalle);
+        //TaskService.save(parseInt($stateParams), 'solucion', $scope.details.solucion);
+        //$scope.task.img = $scope.pictureUrl;
+        $state.go('app');
+    };
+
+    $scope.pictureUrl = [];
     $scope.takePicture = function () {
         $cordovaCamera.getPicture(cameraOptions)
             .then(function(imageData) {
-                console.log('camera data: ' + angular.toJson(imageData));
-                $scope.pictureUrl = "data:image/jpeg;base64," + imageData;
+                $scope.pictureUrl.push("data:image/jpeg;base64," + imageData);
         }, function(err) {
                 console.log('camera error: ' + angular.toJson(err));
         });
