@@ -19,14 +19,14 @@
             <p>{{task.hora_creacion}}</p>
         </div>
     </div>
-    <div class="list">
+    <div class="list" ng-repeat="a in range(150) track by $index">
         <label class="item item-input item-stacked-label">
             <span class="input-label">Solución</span>
-            <input type="text" placeholder="Solución 1" ng-model="details.solucion">
+            <input type="text" placeholder="Solución 1"  ng-required="true">
         </label>
         <label class="item item-input item-stacked-label">
             <span class="input-label">Detalle</span>
-            <textarea placeholder="Detalles de la solución aquí" ng-model="details.detalle"></textarea>
+            <textarea placeholder="Detalles de la solución aquí" ></textarea>
         </label>
     </div>
 

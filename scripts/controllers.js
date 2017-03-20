@@ -183,7 +183,7 @@ angular.module('techs')
     };
 
     $scope.pictureUrl = [];
-    $scope.takePicture = function () {
+  /*  $scope.takePicture = function () {
         $cordovaCamera.getPicture(cameraOptions)
             .then(function(imageData) {
                 $scope.pictureUrl.push("data:image/jpeg;base64," + imageData);
@@ -195,6 +195,11 @@ angular.module('techs')
         destinationType: Camera.DestinationType.DATA_URL,
         encodingType: Camera.EncodingType.JPEG
     };
+*/
+        $scope.range = function(n) {
+            return new Array(n);
+        };
+
 }])
 ;
 
