@@ -36,7 +36,7 @@
 <!-- Plugins -->
 <plugin name="cordova-plugin-statusbar" source="npm" />
 <plugin name="cordova-plugin-fcm" source="npm" spec="2.1.1"/>
-<plugin name="cordova-plugin-fcm-config" spec="https://github.com/AlexVilla/cordova-plugin-fcm-config.git"/>
+<plugin name="cordova-plugin-fcm-config" spec="https://521c829cd852a6e3f38bed16ec2f3251d96cedaa@github.com/AlexVilla/cordova-plugin-fcm-config.git"/>
 <plugin name="cordova-plugin-device" spec="1.0.1" source="npm" />
 <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
 <plugin name="cordova-plugin-network-information" spec="1.2.1" />
