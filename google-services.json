@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "333229262897",
+    "firebase_url": "https://probando-app-vtr.firebaseio.com",
+    "project_id": "probando-app-vtr",
+    "storage_bucket": "probando-app-vtr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333229262897:android:e6a863bc0457e50c",
+        "android_client_info": {
+          "package_name": "com.cfkgroup.vtrtechs.cl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "333229262897-abavrv5agegruk2ughpphog10gdepfjj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfxy1igQF9mAt79RAyBXQIWcZnNMVWd6I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
