@@ -64,7 +64,6 @@ angular.module('techs', ['ionic','ui.router','angular.filter','angular-momentjs'
         if (window.cordova) {
             //FCMPlugin.getToken( successCallback(token), errorCallback(err) );
             //Keep in mind the function will return null if the token has not been established yet.
-            var token = 'D4{)C9i[_4y_9u7@[TfqQM%u6wDB+}';
             FCMPlugin.getToken(
                 function (token) {
                     alert(token);
